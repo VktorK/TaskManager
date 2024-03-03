@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\TaskFilter;
 use App\Http\Requests\Task\IndexTaskRequest;
 use App\Http\Requests\Task\StoreTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
@@ -19,10 +20,11 @@ class TaskController extends Controller
     public function index(IndexTaskRequest $request)
     {
         $data = $request->validated();
-        return Task::all()->sortByDesc('created_at');
+        $filter = new TaskFilter();
+        $tasks = Task::query();
 
-
-//        return TaskResource::collection()->resolve();
+        $tasks = $filter->apply($tasks,$data)->get();
+        return TaskResource::collection($tasks)->resolve();
     }
 
 

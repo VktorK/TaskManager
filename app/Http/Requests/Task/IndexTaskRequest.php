@@ -16,12 +16,13 @@ class IndexTaskRequest extends FormRequest
     public function rules()
     {
         return [
-          'title'=>'nullable|string',
-          'content'=>'nullable|string',
           'status'=>'nullable|integer',
-          'created_at'=>'nullable|date',
-          'deleted_at'=>'nullable|date'
+          'created_from'=>'nullable|date_format:Y-m-d H:i:s',
+          'created_to'=>'nullable|date_format:Y-m-d H:i:s',
+          'deleted_from'=>'nullable|date_format:Y-m-d H:i:s',
+          'deleted_to'=>'nullable|date_format:Y-m-d H:i:s'
         ];
     }
 }
+
 

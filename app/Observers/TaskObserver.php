@@ -36,23 +36,20 @@ class TaskObserver
      */
     public function deleted(Task $task)
     {
-        dd($task->getDirty());
-//        if(isset($task->getDirty()['deleted_at'])){
-//            Task::where('status')->update([
-//               "status"=> 2
-//            ]);
-//        }
+       //
     }
 
-//    public function deleting(Task $task): void
-//    {
-//        if(isset($task->getDirty()['deleted_at'])){
-//            Task::where('status')->update([
-//                "status"=> 2
-//            ]);
-//
-
-
+    /**
+     * Handle the Task "deleted" event.
+     *
+     * @param  \App\Models\Task  $task
+     * @return void
+     */
+    public function deleting(Task $task): void
+    {
+        $task->update(["status"=> 2
+        ]);
+    }
 
     /**
      * Handle the Task "restored" event.
