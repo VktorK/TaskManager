@@ -8,6 +8,7 @@ use App\Http\Requests\Task\StoreTaskRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
 use App\Http\Resources\Task\TaskResource;
 use App\Models\Task;
+use App\Services\IndexTaskService;
 use App\Services\TaskService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -20,10 +21,7 @@ class TaskController extends Controller
     public function index(IndexTaskRequest $request)
     {
         $data = $request->validated();
-        $filter = new TaskFilter();
-        $tasks = Task::query();
-
-        $tasks = $filter->apply($tasks,$data)->get();
+        $tasks = IndexTaskService::index($data);
         return TaskResource::collection($tasks)->resolve();
     }
 
