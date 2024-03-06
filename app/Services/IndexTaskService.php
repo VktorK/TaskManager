@@ -14,4 +14,9 @@ class IndexTaskService
         $tasks = $data['status'] == 2 ? Task::withTrashed() : Task::withoutTrashed();
         return $filter->apply($tasks,$data)->get();
     }
+
+    public static function create()
+    {
+        //
+    }
 }
