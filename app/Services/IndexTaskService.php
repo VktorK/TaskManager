@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 class IndexTaskService
 {
-    public static function index(array $data): Collection
+    public static function index(array $data): Collection|array
     {
-        $filter = new TaskFilter();
-        $tasks = $data['status'] == 2 ? Task::withTrashed() : Task::withoutTrashed();
-        return $filter->apply($tasks,$data)->get();
+        if(!$data){
+            return Task::all();
+        } else {
+            $filter = new TaskFilter();
+            $tasks = $data['status'] == 2 ? Task::withTrashed() : Task::withoutTrashed();
+            return $filter->apply($tasks, $data)->get();
+            }
     }
 
     public static function create()

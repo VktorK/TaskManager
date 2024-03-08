@@ -20,7 +20,7 @@ class TaskResource extends JsonResource
             'title'=> $this->title,
             'content'=>$this->content,
             'status'=>$this->status,
-            "created_at" => $this-> created_at->format('Y-m-d H:i:s'),
+            "created_at" => $this-> created_at,
             'deleted_at'=>$this->deleted_at
 
 

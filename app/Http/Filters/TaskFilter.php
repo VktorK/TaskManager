@@ -27,11 +27,11 @@ private array $keys = [
         return $builder;
     }
 
+
 private function status(Builder $builder, mixed $value): void
 {
     $builder->where('status','=',$value);
 }
-
 
 
 private function createdFrom(Builder $builder, mixed $value): void
