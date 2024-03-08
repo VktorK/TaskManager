@@ -18,9 +18,4 @@ class IndexTaskService
             return $filter->apply($tasks, $data)->get();
             }
     }
-
-    public static function create()
-    {
-        //
-    }
 }
