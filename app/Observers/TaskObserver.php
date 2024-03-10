@@ -47,7 +47,7 @@ class TaskObserver
      */
     public function deleting(Task $task): void
     {
-        $task->update(["status"=> 2
+        $task->update(["status"=> Task::STATUS_DESTROY
         ]);
     }
 
