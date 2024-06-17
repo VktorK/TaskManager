@@ -28,18 +28,18 @@ private array $keys = [
     }
 
 
-private function status(Builder $builder, mixed $value): void
+protected function status(Builder $builder, mixed $value): void
 {
     $builder->where('status','=',$value);
 }
 
 
-private function createdFrom(Builder $builder, mixed $value): void
+    protected function createdFrom(Builder $builder, mixed $value): void
 {
     $builder->where('created_at','>=',$value);
 }
 
-private function createdTo(Builder $builder, mixed $value): void
+    protected function createdTo(Builder $builder, mixed $value): void
 {
     $builder->where('created_at','<=',$value);
 }
