@@ -1,0 +1,585 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "TEST28 DOC API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/admin/users": {
+            "get": {
+                "tags": [
+                    "Админские функции (Взаимодействие с User)"
+                ],
+                "summary": "Список пользователей",
+                "operationId": "7db443ccc8b3f12fbe1b6cdf2f8624b9",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "example@example.com"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2024-07-05T12:17:58"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Админские функции (Взаимодействие с User)"
+                ],
+                "summary": "Создание пользователя",
+                "operationId": "02a8fab98dc28f263630dc5f89fbc7df",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Tim"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "example@example.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123123123"
+                                            },
+                                            "confirm_password": {
+                                                "type": "string",
+                                                "example": "123123123"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Tim"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "example@example.com"
+                                        },
+                                        "password": {
+                                            "type": "string",
+                                            "example": "123123123"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/users/{user}": {
+            "get": {
+                "tags": [
+                    "Админские функции (Взаимодействие с User)"
+                ],
+                "summary": "Просмотр профиля",
+                "operationId": "acb9ee11619935576ac67b91730a2651",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "LitleMan"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "example@example.com"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Админские функции (Взаимодействие с User)"
+                ],
+                "summary": "Удаление профиля пользователя",
+                "operationId": "98567b39e7131ea6069df0a2219bb70b",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Пользователь удален"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Админские функции (Взаимодействие с User)"
+                ],
+                "summary": "Обновление профиля user",
+                "operationId": "b6062dd680beea175baa5465443a8ae9",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "id user",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Tim"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "example@example.com"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Tim"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "example@example.com"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Авторизация и Создание аккаунта"
+                ],
+                "summary": "Логин",
+                "operationId": "ba24fa17938b90704dfbdb3b59591697",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string",
+                                                "example": "test@example.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123123123"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "123"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": 48000
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "post": {
+                "tags": [
+                    "Авторизация и Создание аккаунта"
+                ],
+                "summary": "Создание пользователя",
+                "operationId": "ea53f04a382249f34755d11262e10e94",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Timmy"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "test@example.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123123123"
+                                            },
+                                            "confirm_password": {
+                                                "type": "string",
+                                                "example": "123123123"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Timmy"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "test@example.com"
+                                        },
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXJzIiwiaWF0IjoxNzE5MjQzODAxLCJleHAiOjIwNzkyNDM4MDEsIm5iZiI6MTcxOTI0MzgwMSwianRpIjoidTRaeEdTVElEWDhyTlIyQiIsInN1YiI6IjE0IiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.mMgNmEDIP6xEnnIAO5WhrAXsW--uIHBInLbyCHmS9DY"
+                                        },
+                                        "profile": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "Ivan"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Dyrak"
+                                                    },
+                                                    "date_of_birth": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "10.10.1990"
+                                                    },
+                                                    "login": {
+                                                        "type": "string",
+                                                        "example": "Noone"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Content"
+                    }
+                }
+            }
+        },
+        "/api/user/users": {
+            "delete": {
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Удаление настоящего пользователя",
+                "operationId": "4b422fcf82604c418dff6830317a655f",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Удалил сам себя"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Пользователь"
+                ],
+                "summary": "Обновление данных у настоящего пользователя",
+                "operationId": "f6b28522b23caada6bc5c46912238bfc",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Timmy"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "example@example.com"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Timmy"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "one@two.com"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Админские функции (Взаимодействие с User)",
+            "description": "Админские функции (Взаимодействие с User)"
+        },
+        {
+            "name": "Авторизация и Создание аккаунта",
+            "description": "Авторизация и Создание аккаунта"
+        },
+        {
+            "name": "Пользователь",
+            "description": "Пользователь"
+        }
+    ]
+}
