@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -11,12 +12,13 @@ class Task extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    use HasFilter;
 
 
     protected $casts = [
-        'created_at' => 'datetime:Y-m-d H:m:s',
-        'updated_at' => 'datetime:Y-m-d H:m:s',
-        'deleted_at' => 'datetime:Y-m-d H:m:s',
+        'created_at' => 'datetime:Y-m-d',
+        'updated_at' => 'datetime:Y-m-d H:i:s',
+        'deleted_at' => 'datetime:Y-m-d H:i:s',
     ];
 
     protected $guarded = false;
@@ -26,7 +28,7 @@ class Task extends Model
     const STATUS_DESTROY = 3;
     const STATUSES = [
         self::STATUS_SUCCESS => 'Создан',
-        self::STATUS_FAIL => 'Не выполнено',
+        self::STATUS_FAIL => 'Исполнено',
         self::STATUS_DESTROY => 'Удален'
     ];
 

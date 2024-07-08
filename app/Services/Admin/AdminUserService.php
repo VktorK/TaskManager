@@ -32,7 +32,8 @@ class AdminUserService
      */
     public static function update(array $data, User $user): mixed
     {
-        $user = $user->update($data);
+
+        $user->update($data);
         return $user->fresh();
     }
 

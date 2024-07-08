@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
  *     path="/api/"
  *     ),
  * @OA\Info(
- *     title="TEST28 DOC API",
+ *     title="TaskManager DOC API",
  *     version="1.0.0"
  * ),
  *

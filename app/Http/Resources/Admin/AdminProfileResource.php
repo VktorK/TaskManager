@@ -17,11 +17,13 @@ class AdminProfileResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'user_id' => $this->user_id,
+            'id'=> $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'date_of_birth' => $this->date_of_birth,
             'login' => $this->login,
+            'user_id' => $this->user_id,
+            'created_at' => $this->created_at,
         ];
     }
 }

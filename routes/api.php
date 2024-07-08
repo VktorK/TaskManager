@@ -64,9 +64,8 @@ Route::group(['prefix'=> 'admin','middleware' => ['jwt.auth', 'is.admin']],funct
 
     Route::get('profiles', [AdminProfileController::class, 'index']);
     Route::get('profiles/{profile}', [AdminProfileController::class, 'show']);
-    Route::post('profiles', [AdminProfileController::class, 'store']);
     Route::patch('profiles/{profile}', [AdminProfileController::class, 'update']);
-    Route::delete('profiles/{profile}', [AdminProfileController::class, 'destroy']);
+
 });
 
 

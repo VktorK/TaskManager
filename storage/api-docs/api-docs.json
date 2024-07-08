@@ -1,11 +1,664 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "TEST28 DOC API",
+        "title": "TaskManager DOC API",
         "version": "1.0.0"
     },
     "paths": {
         "/api/": {},
+        "/api/admin/profiles": {
+            "get": {
+                "tags": [
+                    "Админские функции (Данные Профиля)"
+                ],
+                "summary": "Просмотр Профилей всех пользователей",
+                "operationId": "edae69743e91e7332742bcc3b9330319",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "Иван"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "Иванов"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "07-05-1985"
+                                        },
+                                        "login": {
+                                            "type": "string",
+                                            "example": "Noone"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/profiles/{profile}": {
+            "get": {
+                "tags": [
+                    "Админские функции (Данные Профиля)"
+                ],
+                "summary": "Просмотр Профиля пользователя",
+                "operationId": "c1b6d28571ae21efc886b95077816067",
+                "parameters": [
+                    {
+                        "name": "profile",
+                        "in": "path",
+                        "description": "id profile",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "Иван"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "Иванов"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "07-05-1985"
+                                        },
+                                        "login": {
+                                            "type": "string",
+                                            "example": "Noone"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Админские функции (Данные Профиля)"
+                ],
+                "summary": "Обновление данных профиля пользователя",
+                "operationId": "98934b698be07449384b973074935149",
+                "parameters": [
+                    {
+                        "name": "profile",
+                        "in": "path",
+                        "description": "id profile",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Иван"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Иванов"
+                                            },
+                                            "date_of_birth": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "07-05-1985"
+                                            },
+                                            "login": {
+                                                "type": "string",
+                                                "example": "Noone"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "Иван"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Иванов"
+                                                    },
+                                                    "date_of_birth": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "07-05-1985"
+                                                    },
+                                                    "login": {
+                                                        "type": "string",
+                                                        "example": "Noone"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/tasks": {
+            "get": {
+                "tags": [
+                    "Админские функции (Данные Заданий)"
+                ],
+                "summary": "Список Заданий всех пользователей",
+                "operationId": "a1e82472d5018817ab186e53c08f538b",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "Id user",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Название Задания",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Описание Задания",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Статус задания,\n *         1-Создано\n *         2-Исполнено\n *         3-Удалено",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "created_from",
+                        "in": "query",
+                        "description": "Дата создания с",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    },
+                    {
+                        "name": "created_to",
+                        "in": "query",
+                        "description": "Дата создания до",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Переустановить что-то"
+                                                    },
+                                                    "content": {
+                                                        "type": "text",
+                                                        "example": "Способ переустановки"
+                                                    },
+                                                    "status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Админские функции (Данные Заданий)"
+                ],
+                "summary": "Создание 'Задания'",
+                "operationId": "2c22522bbdc8f90794896a2d030dc83b",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Переустановить MacOs"
+                                            },
+                                            "content": {
+                                                "type": "text",
+                                                "example": "Действия по заданию"
+                                            },
+                                            "status": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Переустановить MacOs"
+                                        },
+                                        "content": {
+                                            "type": "text",
+                                            "example": "Действия по заданию"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/admin/tasks/{task}": {
+            "get": {
+                "tags": [
+                    "Админские функции (Данные Заданий)"
+                ],
+                "summary": "Просмотр Задания пользователя",
+                "operationId": "74559716cf71469c90898487f292e5d6",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Переустановить MacOs"
+                                        },
+                                        "content": {
+                                            "type": "text",
+                                            "example": "Действия по заданию"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Админские функции (Данные Заданий)"
+                ],
+                "summary": "Удаление 'Задание'",
+                "operationId": "5cd53b6d0b643d0b9a6e51377a08bd3d",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": " Task Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Админские функции (Данные Заданий)"
+                ],
+                "summary": "Обновление данных Задания",
+                "operationId": "cb21fc827923c85d4394a8e91fd37923",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Переустановить MacOs"
+                                            },
+                                            "content": {
+                                                "type": "text",
+                                                "example": "Действия по заданию"
+                                            },
+                                            "status": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Переустановить MacOs"
+                                                    },
+                                                    "content": {
+                                                        "type": "text",
+                                                        "example": "Действия по заданию"
+                                                    },
+                                                    "status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/admin/users": {
             "get": {
                 "tags": [
@@ -116,6 +769,35 @@
                                         "password": {
                                             "type": "string",
                                             "example": "123123123"
+                                        },
+                                        "profile": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "Ivan"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Dyrak"
+                                                    },
+                                                    "date_of_birth": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "10.10.1990"
+                                                    },
+                                                    "login": {
+                                                        "type": "string",
+                                                        "example": "Noone"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
                                         }
                                     },
                                     "type": "object"
@@ -139,7 +821,7 @@
                 "tags": [
                     "Админские функции (Взаимодействие с User)"
                 ],
-                "summary": "Просмотр профиля",
+                "summary": "Просмотр пользователя",
                 "operationId": "acb9ee11619935576ac67b91730a2651",
                 "parameters": [
                     {
@@ -189,7 +871,7 @@
                 "tags": [
                     "Админские функции (Взаимодействие с User)"
                 ],
-                "summary": "Удаление профиля пользователя",
+                "summary": "Удаление пользователя",
                 "operationId": "98567b39e7131ea6069df0a2219bb70b",
                 "parameters": [
                     {
@@ -231,7 +913,7 @@
                 "tags": [
                     "Админские функции (Взаимодействие с User)"
                 ],
-                "summary": "Обновление профиля user",
+                "summary": "Обновление пользователя",
                 "operationId": "b6062dd680beea175baa5465443a8ae9",
                 "parameters": [
                     {
@@ -460,6 +1142,399 @@
                 }
             }
         },
+        "/api/user/tasks": {
+            "get": {
+                "tags": [
+                    "Пользовательские функции (Данные Заданий)"
+                ],
+                "summary": "Список Заданий авторизированного пользователя",
+                "operationId": "d4d32330e747d424c3635dea25a9ebde",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "Название Задания",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "Описание Задания",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Статус задания,\n *          1-Создано\n *          2-Исполнено\n *          3-Удалено",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "created_from",
+                        "in": "query",
+                        "description": "Дата создания с",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    },
+                    {
+                        "name": "created_to",
+                        "in": "query",
+                        "description": "Дата создания до",
+                        "required": false,
+                        "schema": {
+                            "type": "date-time"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Переустановить что-то"
+                                                    },
+                                                    "content": {
+                                                        "type": "text",
+                                                        "example": "Способ переустановки"
+                                                    },
+                                                    "status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Пользовательские функции (Данные Заданий)"
+                ],
+                "summary": "Создание 'Задания', автоматические прокидывает user_id и status=1",
+                "operationId": "70d6e85d9f3d9527401ce4f50b6dc6a9",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Переустановить MacOs"
+                                            },
+                                            "content": {
+                                                "type": "text",
+                                                "example": "Действия по заданию"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Переустановить MacOs"
+                                        },
+                                        "content": {
+                                            "type": "text",
+                                            "example": "Действия по заданию"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/user/tasks/{task}": {
+            "get": {
+                "tags": [
+                    "Пользовательские функции (Данные Заданий)"
+                ],
+                "summary": "Просмотр Задания авторизированного пользователя",
+                "operationId": "e73bba40382b16f61edeef541ad80deb",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Переустановить MacOs"
+                                        },
+                                        "content": {
+                                            "type": "text",
+                                            "example": "Действия по заданию"
+                                        },
+                                        "status": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Пользовательские функции (Данные Заданий)"
+                ],
+                "summary": "Удаление 'Задание', принадлажащего авторизированному пользователю",
+                "operationId": "07009363d214107156b7d4d8ce572eb9",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": " Task Deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Пользовательские функции (Данные Заданий)"
+                ],
+                "summary": "Обновление данных Задания принадлажащего авторизированному пользователю",
+                "operationId": "fd4c353311e79baac6fe7a3984ba3a72",
+                "parameters": [
+                    {
+                        "name": "task",
+                        "in": "path",
+                        "description": "id task",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string",
+                                                "example": "Переустановить MacOs"
+                                            },
+                                            "content": {
+                                                "type": "text",
+                                                "example": "Действия по заданию"
+                                            },
+                                            "status": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Переустановить MacOs"
+                                                    },
+                                                    "content": {
+                                                        "type": "text",
+                                                        "example": "Действия по заданию"
+                                                    },
+                                                    "status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/api/user/users": {
             "delete": {
                 "tags": [
@@ -558,9 +1633,224 @@
                     }
                 ]
             }
+        },
+        "/api/user/profiles": {
+            "get": {
+                "tags": [
+                    "Пользовательские функции (Данные Профиля)"
+                ],
+                "summary": "Просмотр Профиля авторизированного пользователя",
+                "operationId": "b81476a994cb17e398896a1390ff6393",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "first_name": {
+                                            "type": "string",
+                                            "example": "Иван"
+                                        },
+                                        "last_name": {
+                                            "type": "string",
+                                            "example": "Иванов"
+                                        },
+                                        "date_of_birth": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "07-05-1985"
+                                        },
+                                        "login": {
+                                            "type": "string",
+                                            "example": "Noone"
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date",
+                                            "example": "2010-10-22"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Пользовательские функции (Данные Профиля)"
+                ],
+                "summary": "Обновление данных профиля принадлажащего авторизированному пользователю",
+                "operationId": "0409e3734d87e9b4d1008a564f5bb87a",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Иван"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Иванов"
+                                            },
+                                            "date_of_birth": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "07-05-1985"
+                                            },
+                                            "login": {
+                                                "type": "string",
+                                                "example": "Noone"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "first_name": {
+                                                        "type": "string",
+                                                        "example": "Иван"
+                                                    },
+                                                    "last_name": {
+                                                        "type": "string",
+                                                        "example": "Иванов"
+                                                    },
+                                                    "date_of_birth": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "07-05-1985"
+                                                    },
+                                                    "login": {
+                                                        "type": "string",
+                                                        "example": "Noone"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date",
+                                                        "example": "2010-10-22"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unautoruzed"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
         }
     },
     "components": {
+        "responses": {
+            "200": {
+                "description": "ok",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "first_name": {
+                                                "type": "string",
+                                                "example": "Иван"
+                                            },
+                                            "last_name": {
+                                                "type": "string",
+                                                "example": "Иванов"
+                                            },
+                                            "date_of_birth": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "07-05-1985"
+                                            },
+                                            "login": {
+                                                "type": "string",
+                                                "example": "Noone"
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "example": "2010-10-22"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "401": {
+                "description": "Unautoruzed"
+            }
+        },
         "securitySchemes": {
             "bearerAuth": {
                 "type": "http",
@@ -570,6 +1860,14 @@
     },
     "tags": [
         {
+            "name": "Админские функции (Данные Профиля)",
+            "description": "Админские функции (Данные Профиля)"
+        },
+        {
+            "name": "Админские функции (Данные Заданий)",
+            "description": "Админские функции (Данные Заданий)"
+        },
+        {
             "name": "Админские функции (Взаимодействие с User)",
             "description": "Админские функции (Взаимодействие с User)"
         },
@@ -578,8 +1876,16 @@
             "description": "Авторизация и Создание аккаунта"
         },
         {
+            "name": "Пользовательские функции (Данные Заданий)",
+            "description": "Пользовательские функции (Данные Заданий)"
+        },
+        {
             "name": "Пользователь",
             "description": "Пользователь"
+        },
+        {
+            "name": "Пользовательские функции (Данные Профиля)",
+            "description": "Пользовательские функции (Данные Профиля)"
         }
     ]
 }

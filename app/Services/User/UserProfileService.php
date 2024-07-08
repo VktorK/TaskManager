@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\User\Profile;
+namespace App\Services\User;
 
 use App\Models\Profile;
 use Illuminate\Database\Eloquent\Collection;

@@ -35,7 +35,7 @@ use App\Http\Controllers\Controller;
  *
  * @OA\Get(
  *     path="/api/admin/users/{user}",
- *     summary="Просмотр профиля",
+ *     summary="Просмотр пользователя",
  *     tags={"Админские функции (Взаимодействие с User)"},
  *     security={ {"bearerAuth": {} }},
  *     @OA\Parameter(
@@ -91,7 +91,14 @@ use App\Http\Controllers\Controller;
  *             @OA\Property(property="name", type="string", example="Tim"),
  *             @OA\Property(property="email", type="string", example="example@example.com"),
  *             @OA\Property(property="password", type="string", example="123123123"),
-*         ),
+ *             @OA\Property(property="profile", type="array", @OA\Items(
+ *                  @OA\Property(property="id", type="integer", example=1),
+ *                  @OA\Property(property="first_name", type="string", example="Ivan"),
+ *                  @OA\Property(property="last_name", type="string", example="Dyrak"),
+ *                  @OA\Property(property="date_of_birth", type="date", example="10.10.1990"),
+ *                  @OA\Property(property="login", type="string", example="Noone"),
+*              )),
+ *         ),
  *     ),
  *     @OA\Response(
  *         response=401,
@@ -102,7 +109,7 @@ use App\Http\Controllers\Controller;
  *
  * @OA\Patch(
  *     path="/api/admin/users/{user}",
- *     summary="Обновление профиля user",
+ *     summary="Обновление пользователя",
  *     tags={"Админские функции (Взаимодействие с User)"},
  *     security={ {"bearerAuth": {} }},
  *     @OA\Parameter(
@@ -143,7 +150,7 @@ use App\Http\Controllers\Controller;
  *
  * @OA\Delete(
  *     path="/api/admin/users/{user}",
- *     summary="Удаление профиля пользователя",
+ *     summary="Удаление пользователя",
  *     tags={"Админские функции (Взаимодействие с User)"},
  *     security={ {"bearerAuth": {} }},
  *     @OA\Parameter(

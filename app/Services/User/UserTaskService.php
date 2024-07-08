@@ -1,23 +1,23 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\User;
 
 use App\Http\Filters\TaskFilter;
 use App\Models\Task;
 use Illuminate\Database\Eloquent\Collection;
 
-class TaskService
+class UserTaskService
 {
     public static function index($data): Collection| array
     {
-        if(!$data){
-            return Task::all();
+        if(!$data or $data['status'] != 3){
+            $tasks = Task::where('user_id',auth()->id())
+                ->where('status',$data['status']);
         } else {
-            $filter = app()->make(TaskFilter::class);
-            $tasks = $data['status'] == 3 ? Task::withTrashed() : Task::withoutTrashed();
-            return $filter->apply($tasks, $data)->get();
+            $tasks = Task::withTrashed();
         }
-
+        $filter = app()->make(TaskFilter::class);
+        return $filter->apply($tasks, $data)->get();
     }
 
     public static function store(array $data)

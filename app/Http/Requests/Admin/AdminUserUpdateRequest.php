@@ -32,4 +32,5 @@ class AdminUserUpdateRequest extends FormRequest
             'email.required' => 'Поле email обязательно к заполению',
         ];
     }
+
 }

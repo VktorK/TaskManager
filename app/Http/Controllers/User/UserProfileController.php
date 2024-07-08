@@ -7,8 +7,7 @@ use App\Http\Requests\User\Profile\UserStoreProfileRequest;
 use App\Http\Requests\User\Profile\UserUpdateProfileRequest;
 use App\Http\Resources\Profile\UserProfileResource;
 use App\Models\Profile;
-use App\Services\User\Profile\UserProfileService;
-use Illuminate\Http\JsonResponse;
+use App\Services\User\UserProfileService;
 
 
 class UserProfileController extends Controller
@@ -44,11 +43,4 @@ class UserProfileController extends Controller
         return UserProfileResource::make($profile)->resolve();
     }
 
-    public function destroy(): JsonResponse
-    {
-        UserProfileService::destroy();
-        return response()->json([
-            'message' => 'Profile deleted'
-        ]);
-    }
 }
