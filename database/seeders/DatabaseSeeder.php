@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
         User::withoutEvents(function () {
             User::factory()->create([
                 'name' => 'Admin',
-                'email' => 'test@example.com',
+                'email' => 'example@example.com',
                 'password' => Hash::make('123123123'),
             ]);
         });
